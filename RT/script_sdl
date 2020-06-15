@@ -1,0 +1,17 @@
+#!/bin/bash
+
+SDL_PATH=./SDL
+
+#You can change the prefix, it will move the location of the exec sdl2-config
+PREFIX=~/.brew/
+
+if [ ! -d $SDL_PATH ]
+then
+	hg clone https://hg.libsdl.org/SDL $SDL_PATH
+	cd $SDL_PATH
+	mkdir build
+	cd build
+	../configure --prefix ~/.brew/
+	make -j4
+	make install
+fi
